@@ -10,12 +10,16 @@ public class Heap {
         heap = new ArrayList<>();
     }
 
+    private void swap(int i, int j) {
+        Elemento temp = heap.get(i);
+        heap.set(i, heap.get(j));
+        heap.set(j, temp);
+    }
+
     public void heapifyUp(int indice) {
         int padre = (indice - 1) / 2;
         if (indice > 0 && heap.get(indice).prioridad > heap.get(padre).prioridad) {
-            Elemento temp = heap.get(indice);
-            heap.set(indice, heap.get(padre));
-            heap.set(padre, temp);
+            swap(indice, padre);
             heapifyUp(padre);
         }
     }
@@ -34,15 +38,16 @@ public class Heap {
         }
 
         if (mayor != indice) {
-            Elemento temp = heap.get(indice);
-            heap.set(indice, heap.get(mayor));
-            heap.set(mayor, temp);
+            swap(indice, mayor);
             heapifyDown(mayor);
         }
     }
 
 
-    public void insertar(Elemento elemento) {
+
+
+    public void insertar(int valor, int prioridad) {
+        Elemento elemento=new Elemento(valor,prioridad);
         heap.add(elemento);
         heapifyUp(heap.size() - 1);
     }

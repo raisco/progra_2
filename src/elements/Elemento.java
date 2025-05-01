@@ -9,7 +9,4 @@ public class Elemento {
         this.prioridad = prioridad;
     }
 
-    public Elemento(int prioridad){
-        this.prioridad = prioridad;
-    }
 }

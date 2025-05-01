@@ -8,10 +8,10 @@ public class Main {
 
 
         Heap heap = new Heap();
-        heap.insertar(new Elemento(50 ));
-        heap.insertar(new Elemento(89));
-        heap.insertar(new Elemento(100));
-        heap.insertar(new Elemento(44));
+        heap.insertar(50,10);
+        heap.insertar(89,10);
+        heap.insertar(100,10);
+        heap.insertar(44,10);
 
         System.out.println("Elemento con mayor prioridad: " + heap.primero().prioridad);
 

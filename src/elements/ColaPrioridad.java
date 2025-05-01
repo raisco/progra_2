@@ -12,8 +12,7 @@ public class ColaPrioridad implements InterfazColaPrioridad {
     }
 
     public void AcolarPrioridad(int valor, int prioridad) {
-        Elemento elemento = new Elemento(valor, prioridad);
-        heap.insertar(elemento);
+        heap.insertar(valor, prioridad);
     }
 
     public void Desacolar() {
