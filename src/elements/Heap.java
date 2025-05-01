@@ -47,22 +47,19 @@ public class Heap {
         heapifyUp(heap.size() - 1);
     }
 
-    public boolean eliminar(Elemento elemento) {
-        if (!heap.isEmpty()) {
-            int index = heap.indexOf(elemento);
-            if (index != -1) {
-                Elemento ultimo = heap.remove(heap.size() - 1);
-                if (index < heap.size()) {
-                    heap.set(index, ultimo);
-                    heapifyDown(index);
-                    heapifyUp(index);
-                }
-                return true;
+    public void extraerMax() {
+        if (!heap.isEmpty()){
+            Elemento max = heap.getFirst();
+            Elemento ultimo = heap.removeLast();
+
+            if (!heap.isEmpty()) {
+                heap.set(0, ultimo);
+                heapifyDown(0);
             }
         }
-        return false;
-    }
 
+
+    }
 
     public boolean esVacia() {
         return heap.isEmpty();
@@ -71,7 +68,7 @@ public class Heap {
 
     public Elemento primero() {
         if (!heap.isEmpty()) {
-            return heap.get(0);
+            return heap.getFirst();
         }
         return null;
     }
@@ -88,7 +85,7 @@ public class Heap {
         while (!copia.esVacia()) {
             Elemento max = copia.primero();
             resultado.add(max);
-            copia.eliminar(max);
+            copia.extraerMax();
         }
 
         return resultado;

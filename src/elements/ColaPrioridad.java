@@ -17,9 +17,8 @@ public class ColaPrioridad implements InterfazColaPrioridad {
     }
 
     public void Desacolar() {
-        if (!heap.esVacia()) {
-            heap.eliminar(heap.primero());
-        }
+            heap.extraerMax();
+
     }
 
     public boolean ColaVacia() {
