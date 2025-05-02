@@ -27,20 +27,18 @@ public class ColaPrioridad implements InterfazColaPrioridad {
 
     @Override
     public int Primero() {
-        Nodo max = heap.primero();
-        if (max == null) {
-            return -1;
-        };
-        return max.valor;
+        if (!heap.estaVacio()) {
+            return heap.primero().valor;
+        }
+        return -1;
     }
 
     @Override
     public int Prioridad() {
-        Nodo max = heap.primero();
-        if (max == null) {
-            return -1;
-        };
-        return max.prioridad;
+        if (!heap.estaVacio()) {
+            return heap.primero().prioridad;
+        }
+        return -1;
     }
 
     @Override
