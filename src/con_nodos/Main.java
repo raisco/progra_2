@@ -7,15 +7,15 @@ public class Main {
         ColaPrioridad cola = new ColaPrioridad();
         cola.InicializarCola();
 
-        // Insertar elementos
+        // Acolar elementos
         cola.AcolarPrioridad(10, 3);
         cola.AcolarPrioridad(20, 5);
         cola.AcolarPrioridad(30, 1);
         cola.AcolarPrioridad(40, 4);
 
         // Mostrar primero y su prioridad
-        System.out.println("Primero: " + cola.Primero());
-        System.out.println("Prioridad: " + cola.Prioridad());
+        System.out.println("Primero en cola de prioridad: " + cola.Primero());
+        System.out.println("Prioridad del primero: " + cola.Prioridad());
 
         // Desacolar
         cola.Desacolar();
@@ -30,10 +30,20 @@ public class Main {
         System.out.println("Prioridad: " + cola.Prioridad());
 
         // Mostrar ordenado por prioridad descendente
-        System.out.println("\nElementos ordenados por prioridad:");
+        System.out.println("\nElementos ordenados por prioridad (mayor a menor):");
         ArrayList<Nodo> ordenados = cola.Ordenar();
         for (Nodo n : ordenados) {
             System.out.println("Valor: " + n.valor + ", Prioridad: " + n.prioridad);
         }
+
+        //vaciar cola
+        System.out.println("\nVaciando cola:");
+        while (!cola.ColaVacia()) {
+            System.out.println("Desacolando: " + cola.Primero() + " (Prioridad: " + cola.Prioridad() + ")");
+            cola.Desacolar();
+        }
+
+        System.out.println("¿La cola está vacía? " + cola.ColaVacia());
+
     }
 }
