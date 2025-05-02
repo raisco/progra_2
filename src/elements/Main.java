@@ -14,6 +14,10 @@ public class Main {
         cola.AcolarPrioridad(30, 5);
         cola.AcolarPrioridad(300, 1);
         cola.AcolarPrioridad(50, 10);
+        cola.AcolarPrioridad(10, 3);
+        cola.AcolarPrioridad(20, 5);
+        cola.AcolarPrioridad(30, 1);
+        cola.AcolarPrioridad(40, 4);
 
         // Mostrar primero y su prioridad
         System.out.println("Primero en cola de prioridad : " + cola.Primero());
@@ -41,6 +45,7 @@ public class Main {
 
         //vaciar cola
         System.out.println("\nVaciando cola:");
+        System.out.println("¿La cola está vacía? " + cola.ColaVacia());
         while (!cola.ColaVacia()) {
             System.out.println("Desacolando: " + cola.Primero() + " (Prioridad: " + cola.Prioridad() + ")");
             cola.Desacolar();

@@ -9,6 +9,7 @@ public class Heap {
 
     public Heap(){
         nodos=new ArrayList<>();
+        raiz=null ;
     }
 
     public void insertar(int valor, int prioridad) {
@@ -35,15 +36,16 @@ public class Heap {
     }
 
     public void extraerMax() { //elimina maximo nodo
+        if (nodos.isEmpty()) return;
 
-        Nodo max = new Nodo(raiz.valor, raiz.prioridad);
         Nodo ultimo = nodos.getLast();
 
-        if (ultimo == raiz) {
+        if (nodos.size() == 1) {
+            nodos.removeFirst();
             raiz = null;
-            nodos.removeLast();
             return;
         }
+
         raiz.valor = ultimo.valor;
         raiz.prioridad = ultimo.prioridad;
 
@@ -59,7 +61,7 @@ public class Heap {
     }
 
     public boolean estaVacio() {
-        return raiz == null;
+        return (null==raiz);
     }
 
     public Nodo primero() {
@@ -104,7 +106,6 @@ public class Heap {
     }
 
 
-
     //metodo extra
     public ArrayList<Nodo> heapSort() {
         Heap copia = new Heap();
@@ -117,9 +118,8 @@ public class Heap {
 
         while (!copia.estaVacio()) {
             Nodo max = copia.primero();
-            copia.extraerMax();
             resultado.add(new Nodo(max.valor, max.prioridad));
-
+            copia.extraerMax();
         }
 
         return resultado;
