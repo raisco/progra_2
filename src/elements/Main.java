@@ -8,12 +8,12 @@ public class Main {
 
 
         Heap heap = new Heap();
-        heap.insertar(50,10);
-        heap.insertar(89,10);
-        heap.insertar(100,10);
-        heap.insertar(44,10);
+        heap.insertar(10,50);
+        heap.insertar(10,89);
+        heap.insertar(10,100);
+        heap.insertar(10,10);
 
-        System.out.println("Elemento con mayor prioridad: " + heap.primero().prioridad);
+        System.out.println("Elemento mayor en max heap: " + heap.primero().prioridad); //es el head de la max-heap
 
 
 
@@ -23,9 +23,12 @@ public class Main {
 
         // Acolar algunos elementos
         cola.AcolarPrioridad(100, 3);
-        cola.AcolarPrioridad(200, 5);
+        cola.AcolarPrioridad(30, 5);
         cola.AcolarPrioridad(300, 1);
-        cola.AcolarPrioridad(400, 10);
+        cola.AcolarPrioridad(50, 10);
+
+        System.out.println("Primero en cola de prioridad : " + cola.Primero());
+        System.out.println("Prioridad del primero: " + cola.Prioridad());
 
         ArrayList<Elemento> ordenados = cola.Ordenar();
 
@@ -34,16 +37,16 @@ public class Main {
             System.out.println(e.valor);
         }
 
-        System.out.println("Primero: " + cola.Primero()); // Esperamos 400
-        System.out.println("Prioridad del primero: " + cola.Prioridad()); // Esperamos 10
+        System.out.println("Primero: " + cola.Primero());
+        System.out.println("Prioridad del primero: " + cola.Prioridad());
 
 
         cola.Desacolar();
 
 
         System.out.println("Después de desacolar:");
-        System.out.println("Nuevo primero: " + cola.Primero()); // Esperamos 200
-        System.out.println("Prioridad: " + cola.Prioridad()); // Esperamos 5
+        System.out.println("Nuevo primero: " + cola.Primero());
+        System.out.println("Prioridad: " + cola.Prioridad());
 
 
         while (!cola.ColaVacia()) {
