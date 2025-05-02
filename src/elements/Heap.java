@@ -84,7 +84,7 @@ public class Heap {
 
 
         for (Elemento e : this.heap) {
-            copia.insertar(new Elemento(e.valor, e.prioridad));
+            copia.insertar(e.valor, e.prioridad);
         }
 
         while (!copia.esVacia()) {
