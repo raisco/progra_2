@@ -21,18 +21,18 @@ public class ColaPrioridad implements InterfazColaPrioridad {
     }
 
     public boolean ColaVacia() {
-        return heap.esVacia();
+        return heap.estaVacio();
     }
 
     public int Primero() {
-        if (!heap.esVacia()) {
+        if (!heap.estaVacio()) {
             return heap.primero().valor;
         }
         return -1;
     }
 
     public int Prioridad() {
-        if (!heap.esVacia()) {
+        if (!heap.estaVacio()) {
             return heap.primero().prioridad;
         }
         return -1;

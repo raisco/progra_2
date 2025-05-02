@@ -1,7 +1,5 @@
 package con_nodos;
 
-import elements.Elemento;
-
 import java.util.ArrayList;
 
 public class ColaPrioridad implements InterfazColaPrioridad {
@@ -13,8 +11,8 @@ public class ColaPrioridad implements InterfazColaPrioridad {
     }
 
     @Override
-    public void AcolarPrioridad(int x, int prioridad) {
-        heap.insertar(x, prioridad);
+    public void AcolarPrioridad(int valor, int prioridad) {
+        heap.insertar(valor, prioridad);
     }
 
     @Override
@@ -29,7 +27,7 @@ public class ColaPrioridad implements InterfazColaPrioridad {
 
     @Override
     public int Primero() {
-        Nodo max = heap.obtenerMax();
+        Nodo max = heap.primero();
         if (max == null) {
             return -1;
         };
@@ -38,7 +36,7 @@ public class ColaPrioridad implements InterfazColaPrioridad {
 
     @Override
     public int Prioridad() {
-        Nodo max = heap.obtenerMax();
+        Nodo max = heap.primero();
         if (max == null) {
             return -1;
         };

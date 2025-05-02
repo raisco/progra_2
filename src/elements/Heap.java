@@ -10,6 +10,38 @@ public class Heap {
         heap = new ArrayList<>();
     }
 
+    public void insertar(int valor, int prioridad) {
+        Elemento elemento=new Elemento(valor,prioridad);
+        heap.add(elemento);
+        heapifyUp(heap.size() - 1);
+    }
+
+    public void extraerMax() { //elimina maximo elemento
+        if (!heap.isEmpty()){
+            Elemento max = heap.getFirst();
+            Elemento ultimo = heap.removeLast();
+
+            if (!heap.isEmpty()) {
+                heap.set(0, ultimo);
+                heapifyDown(0);
+            }
+        }
+
+
+    }
+
+    public boolean estaVacio() {
+        return heap.isEmpty();
+    }
+
+
+    public Elemento primero() {
+        if (!heap.isEmpty()) {
+            return heap.getFirst();
+        }
+        return null;
+    }
+
     private void swap(int i, int j) {
         Elemento temp = heap.get(i);
         heap.set(i, heap.get(j));
@@ -45,39 +77,7 @@ public class Heap {
 
 
 
-
-    public void insertar(int valor, int prioridad) {
-        Elemento elemento=new Elemento(valor,prioridad);
-        heap.add(elemento);
-        heapifyUp(heap.size() - 1);
-    }
-
-    public void extraerMax() {
-        if (!heap.isEmpty()){
-            Elemento max = heap.getFirst();
-            Elemento ultimo = heap.removeLast();
-
-            if (!heap.isEmpty()) {
-                heap.set(0, ultimo);
-                heapifyDown(0);
-            }
-        }
-
-
-    }
-
-    public boolean esVacia() {
-        return heap.isEmpty();
-    }
-
-
-    public Elemento primero() {
-        if (!heap.isEmpty()) {
-            return heap.getFirst();
-        }
-        return null;
-    }
-
+    //metodo extra
     public ArrayList<Elemento> heapSort() {
         ArrayList<Elemento> resultado = new ArrayList<>();
         Heap copia = new Heap();
@@ -87,7 +87,7 @@ public class Heap {
             copia.insertar(e.valor, e.prioridad);
         }
 
-        while (!copia.esVacia()) {
+        while (!copia.estaVacio()) {
             Elemento max = copia.primero();
             resultado.add(max);
             copia.extraerMax();

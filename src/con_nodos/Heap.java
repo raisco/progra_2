@@ -5,7 +5,11 @@ import java.util.ArrayList;
 public class Heap {
 
     private Nodo raiz;
-    private ArrayList<Nodo> nodos = new ArrayList<>();
+    private ArrayList<Nodo> nodos;
+
+    public Heap(){
+        nodos=new ArrayList<>();
+    }
 
     public void insertar(int valor, int prioridad) {
         Nodo nuevo = new Nodo(valor, prioridad);
@@ -30,23 +34,7 @@ public class Heap {
         heapifyUp(nuevo);
     }
 
-    private void heapifyUp(Nodo nodo) {
-        while (nodo.padre != null && nodo.prioridad > nodo.padre.prioridad) {
-            swap(nodo, nodo.padre);
-            nodo = nodo.padre;
-        }
-    }
-
-    private void swap(Nodo a, Nodo b) {
-        int tempVal = a.valor;
-        int tempPrio = a.prioridad;
-        a.valor = b.valor;
-        a.prioridad = b.prioridad;
-        b.valor = tempVal;
-        b.prioridad = tempPrio;
-    }
-
-    public void extraerMax() {
+    public void extraerMax() { //elimina maximo nodo
 
         Nodo max = new Nodo(raiz.valor, raiz.prioridad);
         Nodo ultimo = nodos.getLast();
@@ -54,8 +42,8 @@ public class Heap {
         if (ultimo == raiz) {
             raiz = null;
             nodos.removeLast();
+            return;
         }
-
         raiz.valor = ultimo.valor;
         raiz.prioridad = ultimo.prioridad;
 
@@ -69,6 +57,32 @@ public class Heap {
         heapifyDown(raiz);
 
     }
+
+    public boolean estaVacio() {
+        return raiz == null;
+    }
+
+    public Nodo primero() {
+        return raiz;
+    }
+
+
+    private void swap(Nodo a, Nodo b) {
+        int tempVal = a.valor;
+        int tempPrio = a.prioridad;
+        a.valor = b.valor;
+        a.prioridad = b.prioridad;
+        b.valor = tempVal;
+        b.prioridad = tempPrio;
+    }
+
+    private void heapifyUp(Nodo nodo) {
+        while (nodo.padre != null && nodo.prioridad > nodo.padre.prioridad) {
+            swap(nodo, nodo.padre);
+            nodo = nodo.padre;
+        }
+    }
+
 
     private void heapifyDown(Nodo nodo) {
         while (true) {
@@ -89,14 +103,9 @@ public class Heap {
         }
     }
 
-    public boolean estaVacio() {
-        return raiz == null;
-    }
 
-    public Nodo obtenerMax() {
-        return raiz;
-    }
 
+    //metodo extra
     public ArrayList<Nodo> heapSort() {
         Heap copia = new Heap();
 
@@ -107,7 +116,7 @@ public class Heap {
         ArrayList<Nodo> resultado = new ArrayList<>();
 
         while (!copia.estaVacio()) {
-            Nodo max = copia.obtenerMax();
+            Nodo max = copia.primero();
             copia.extraerMax();
             resultado.add(new Nodo(max.valor, max.prioridad));
 
